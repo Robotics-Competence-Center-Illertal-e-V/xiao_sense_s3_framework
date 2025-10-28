@@ -1,0 +1,4 @@
+cx_freeze
+pyside6
+numpy
+pyserial
