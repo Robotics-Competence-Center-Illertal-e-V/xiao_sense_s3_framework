@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>760</width>
+    <width>773</width>
     <height>623</height>
    </rect>
   </property>
@@ -19,7 +19,7 @@
      <rect>
       <x>-1</x>
       <y>-1</y>
-      <width>761</width>
+      <width>773</width>
       <height>601</height>
      </rect>
     </property>
@@ -47,11 +47,29 @@
         <widget class="QComboBox" name="comboComport"/>
        </item>
        <item>
-        <widget class="QPushButton" name="buttonConnect">
-         <property name="text">
-          <string>Connect</string>
-         </property>
-        </widget>
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <item>
+          <widget class="QPushButton" name="buttonRefresh">
+           <property name="text">
+            <string>Refresh</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="buttonConnect">
+           <property name="text">
+            <string>Connect</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="buttonDisconnect">
+           <property name="text">
+            <string>Disconnect</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </item>
        <item>
         <widget class="QLabel" name="label_3">
@@ -106,7 +124,7 @@
        <item>
         <widget class="QLabel" name="label">
          <property name="text">
-          <string>File</string>
+          <string>Folder</string>
          </property>
         </widget>
        </item>

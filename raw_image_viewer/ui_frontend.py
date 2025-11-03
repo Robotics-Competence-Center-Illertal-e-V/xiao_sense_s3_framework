@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'frontendfSuftm.ui'
+## Form generated from reading UI file 'frontendsvSvmJ.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.10.0
 ##
@@ -23,12 +23,12 @@ class Ui_mainWindow(object):
     def setupUi(self, mainWindow):
         if not mainWindow.objectName():
             mainWindow.setObjectName(u"mainWindow")
-        mainWindow.resize(760, 623)
+        mainWindow.resize(773, 623)
         self.centralwidget = QWidget(mainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.horizontalLayoutWidget = QWidget(self.centralwidget)
         self.horizontalLayoutWidget.setObjectName(u"horizontalLayoutWidget")
-        self.horizontalLayoutWidget.setGeometry(QRect(-1, -1, 761, 601))
+        self.horizontalLayoutWidget.setGeometry(QRect(-1, -1, 773, 601))
         self.horizontalLayout = QHBoxLayout(self.horizontalLayoutWidget)
         self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
@@ -50,10 +50,25 @@ class Ui_mainWindow(object):
 
         self.verticalLayout_2.addWidget(self.comboComport)
 
+        self.horizontalLayout_2 = QHBoxLayout()
+        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
+        self.buttonRefresh = QPushButton(self.horizontalLayoutWidget)
+        self.buttonRefresh.setObjectName(u"buttonRefresh")
+
+        self.horizontalLayout_2.addWidget(self.buttonRefresh)
+
         self.buttonConnect = QPushButton(self.horizontalLayoutWidget)
         self.buttonConnect.setObjectName(u"buttonConnect")
 
-        self.verticalLayout_2.addWidget(self.buttonConnect)
+        self.horizontalLayout_2.addWidget(self.buttonConnect)
+
+        self.buttonDisconnect = QPushButton(self.horizontalLayoutWidget)
+        self.buttonDisconnect.setObjectName(u"buttonDisconnect")
+
+        self.horizontalLayout_2.addWidget(self.buttonDisconnect)
+
+
+        self.verticalLayout_2.addLayout(self.horizontalLayout_2)
 
         self.label_3 = QLabel(self.horizontalLayoutWidget)
         self.label_3.setObjectName(u"label_3")
@@ -113,7 +128,9 @@ class Ui_mainWindow(object):
     def retranslateUi(self, mainWindow):
         mainWindow.setWindowTitle(QCoreApplication.translate("mainWindow", u"rawImageViewer", None))
         self.label_4.setText(QCoreApplication.translate("mainWindow", u"Comport", None))
+        self.buttonRefresh.setText(QCoreApplication.translate("mainWindow", u"Refresh", None))
         self.buttonConnect.setText(QCoreApplication.translate("mainWindow", u"Connect", None))
+        self.buttonDisconnect.setText(QCoreApplication.translate("mainWindow", u"Disconnect", None))
         self.label_3.setText(QCoreApplication.translate("mainWindow", u"Pixel Format", None))
         self.comboPixFormat.setItemText(0, QCoreApplication.translate("mainWindow", u"PIXFORMAT_RGB565", None))
         self.comboPixFormat.setItemText(1, QCoreApplication.translate("mainWindow", u"PIXFORMAT_GRAYSCALE", None))
@@ -121,7 +138,7 @@ class Ui_mainWindow(object):
         self.label_2.setText(QCoreApplication.translate("mainWindow", u"Framesize", None))
         self.comboFramesize.setItemText(0, QCoreApplication.translate("mainWindow", u"FRAMESIZE_96X96", None))
 
-        self.label.setText(QCoreApplication.translate("mainWindow", u"File", None))
+        self.label.setText(QCoreApplication.translate("mainWindow", u"Folder", None))
         self.buttonSnapshot.setText(QCoreApplication.translate("mainWindow", u"Snapshot", None))
     # retranslateUi
 

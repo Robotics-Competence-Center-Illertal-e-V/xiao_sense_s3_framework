@@ -23,13 +23,14 @@ class SerialReaderWorker(QObject):
 
     def start(self):
         """Start reading serial data."""
-        print(f"connect to {self.port_name}, baud {self.baudrate}")
+        print(f"connecting to {self.port_name}, baud {self.baudrate}")
         try:
             self.ser = serial.Serial(self.port_name, self.baudrate, timeout=0.1)
             self._running = True
         except serial.SerialException as e:
             self.error.emit(f"Failed to open port {self.port_name}: {e}")
             self.finished.emit()
+            print("failed")
             return
         print("connected")
         while self._running:
@@ -78,9 +79,15 @@ class SerialManager(QObject):
 
     def connect(self, port_name: str, baudrate: int = 115200):
         """Connect to the selected serial port and start reading data."""
-        if self.thread and self.thread.isRunning():
-            self.error.emit("Already connected to a serial port.")
-            return
+        try:
+            if self.thread or self.thread.isRunning():
+                if self.worker._running:
+                    self.error.emit("Already connected to a serial port.")
+                    return
+                else:
+                    print("worker not running")
+        except:
+            pass
 
         self.thread = QThread()
         self.worker = SerialReaderWorker(port_name, baudrate)
