@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'frontendsvSvmJ.ui'
+## Form generated from reading UI file 'frontendNjLRsG.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.10.0
+## Created by: Qt User Interface Compiler version 6.10.1
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -28,7 +28,7 @@ class Ui_mainWindow(object):
         self.centralwidget.setObjectName(u"centralwidget")
         self.horizontalLayoutWidget = QWidget(self.centralwidget)
         self.horizontalLayoutWidget.setObjectName(u"horizontalLayoutWidget")
-        self.horizontalLayoutWidget.setGeometry(QRect(-1, -1, 773, 601))
+        self.horizontalLayoutWidget.setGeometry(QRect(-1, -1, 779, 601))
         self.horizontalLayout = QHBoxLayout(self.horizontalLayoutWidget)
         self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
@@ -78,6 +78,7 @@ class Ui_mainWindow(object):
         self.comboPixFormat = QComboBox(self.horizontalLayoutWidget)
         self.comboPixFormat.addItem("")
         self.comboPixFormat.addItem("")
+        self.comboPixFormat.addItem("")
         self.comboPixFormat.setObjectName(u"comboPixFormat")
 
         self.verticalLayout_2.addWidget(self.comboPixFormat)
@@ -92,6 +93,11 @@ class Ui_mainWindow(object):
         self.comboFramesize.setObjectName(u"comboFramesize")
 
         self.verticalLayout_2.addWidget(self.comboFramesize)
+
+        self.PixelData = QLabel(self.horizontalLayoutWidget)
+        self.PixelData.setObjectName(u"PixelData")
+
+        self.verticalLayout_2.addWidget(self.PixelData)
 
         self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
@@ -134,10 +140,12 @@ class Ui_mainWindow(object):
         self.label_3.setText(QCoreApplication.translate("mainWindow", u"Pixel Format", None))
         self.comboPixFormat.setItemText(0, QCoreApplication.translate("mainWindow", u"PIXFORMAT_RGB565", None))
         self.comboPixFormat.setItemText(1, QCoreApplication.translate("mainWindow", u"PIXFORMAT_GRAYSCALE", None))
+        self.comboPixFormat.setItemText(2, QCoreApplication.translate("mainWindow", u"PIXFORMAT_YUV422", None))
 
         self.label_2.setText(QCoreApplication.translate("mainWindow", u"Framesize", None))
         self.comboFramesize.setItemText(0, QCoreApplication.translate("mainWindow", u"FRAMESIZE_96X96", None))
 
+        self.PixelData.setText("")
         self.label.setText(QCoreApplication.translate("mainWindow", u"Folder", None))
         self.buttonSnapshot.setText(QCoreApplication.translate("mainWindow", u"Snapshot", None))
     # retranslateUi

@@ -37,6 +37,8 @@ class main_window(QMainWindow, ui_frontend.Ui_mainWindow):
             converter_func = image_processing.convert_image_rgb565_to_rgb
         elif pixformat == "PIXFORMAT_GRAYSCALE":
             converter_func = image_processing.convert_image_grayscale_to_rgb
+        elif pixformat == "PIXFORMAT_YUV422":
+            converter_func = image_processing.convert_image_YUV422_to_rgb
         else:
             return
         if framesize == "FRAMESIZE_96X96":
@@ -66,8 +68,7 @@ class main_window(QMainWindow, ui_frontend.Ui_mainWindow):
         self.serial.connect(port)
 
     def onRefresh(self):
-        for i in range(self.comboComport.count()):
-            self.comboComport.removeItem(i)
+        self.comboComport.clear()
         self.comboComport.addItems(self.serial.list_ports())
 
     def onDisconnect(self):

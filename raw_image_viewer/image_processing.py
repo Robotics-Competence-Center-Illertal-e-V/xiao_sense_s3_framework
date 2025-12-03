@@ -26,8 +26,40 @@ def convert_image_grayscale_to_rgb(data, height, width):
     img = np.zeros((height, width, 3), dtype=np.uint8)
     for x in range(height):
         for y in range(width):
-            g = data[x*width+y+0] 
+            g = data[x*width+y] 
             img[x][y][0] = g
             img[x][y][1] = g
             img[x][y][2] = g
+    return img
+
+def clamp(value):
+    return max(0, min(255, int(value)))
+
+def yuv_to_rgb(Y, U, V):
+    C = Y - 16
+    D = U - 128
+    E = V - 128
+    R = clamp(1.164 * C + 1.596 * E)
+    G = clamp(1.164 * C - 0.392 * D - 0.813 * E)
+    B = clamp(1.164 * C + 2.017 * D)
+    return (R, G, B)
+
+def convert_image_YUV422_to_rgb(data, height, width):
+    if len(data) != height*width*2:
+        raise Exception(f"data to not correct length {len(data)}!={height*width*2}")
+    img = np.zeros((height, width, 3), dtype=np.uint8)
+    for x in range(height):
+        for y in range(int(width/2)): #process two pixel at the same time
+            Y0 = data[(x*width+y*2)*2] 
+            U = data[(x*width+y*2)*2+1]
+            Y1 = data[(x*width+y*2)*2+2]
+            V = data[(x*width+y*2)*2+3]
+            R, G, B = yuv_to_rgb(Y0, U, V)
+            img[x][y*2][0] = R
+            img[x][y*2][1] = G
+            img[x][y*2][2] = B
+            R, G, B = yuv_to_rgb(Y1, U, V)
+            img[x][y*2+1][0] = R
+            img[x][y*2+1][1] = G
+            img[x][y*2+1][2] = B            
     return img

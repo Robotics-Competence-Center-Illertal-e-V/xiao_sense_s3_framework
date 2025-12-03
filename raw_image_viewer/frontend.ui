@@ -19,7 +19,7 @@
      <rect>
       <x>-1</x>
       <y>-1</y>
-      <width>773</width>
+      <width>779</width>
       <height>601</height>
      </rect>
     </property>
@@ -90,6 +90,11 @@
            <string>PIXFORMAT_GRAYSCALE</string>
           </property>
          </item>
+         <item>
+          <property name="text">
+           <string>PIXFORMAT_YUV422</string>
+          </property>
+         </item>
         </widget>
        </item>
        <item>
@@ -106,6 +111,13 @@
            <string>FRAMESIZE_96X96</string>
           </property>
          </item>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="PixelData">
+         <property name="text">
+          <string/>
+         </property>
         </widget>
        </item>
        <item>
