@@ -1,0 +1,70 @@
+name: Build Raw Image Viewer
+
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - "v*"
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-windows-exe:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: python -m pip install --upgrade pip && pip install -r requirements.txt
+
+      - name: Read application version
+        shell: pwsh
+        run: |
+          $version = python -c "from raw_image_viewer import version; print(version.VERSION)"
+          "APP_VERSION=$version" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+
+      - name: Build executable with cx_Freeze
+        run: python setup.py build
+
+      - name: Locate build output
+        shell: pwsh
+        run: |
+          $exeDir = Get-ChildItem -Path build -Directory | Where-Object { $_.Name -like "exe.*" } | Select-Object -First 1
+          if (-not $exeDir) {
+            throw "Could not find cx_Freeze output directory under build/."
+          }
+          "EXE_DIR=$($exeDir.FullName)" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+
+      - name: Create versioned zip archive
+        shell: pwsh
+        run: |
+          $zipName = "raw_image_viewer-v${env:APP_VERSION}-windows.zip"
+          Compress-Archive -Path "$env:EXE_DIR\*" -DestinationPath $zipName -Force
+          "ZIP_NAME=$zipName" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+
+      - name: Upload zip artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: raw_image_viewer-v${{ env.APP_VERSION }}-windows
+          path: ${{ env.ZIP_NAME }}
+          if-no-files-found: error
+
+      - name: Upload zip to GitHub Release
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: ${{ env.ZIP_NAME }}
+          generate_release_notes: true
