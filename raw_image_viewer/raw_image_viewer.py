@@ -31,7 +31,18 @@ class main_window(QMainWindow, ui_frontend.Ui_mainWindow):
 
     def onNewImage(self, data):
         pixformat = self.comboPixFormat.currentText()
-        framesize = self.comboFramesize.currentText()
+        framesize_text = self.comboFramesize.currentText()
+        framesize = framesize_text.split()[0] if framesize_text else ""
+        frame_dimensions = {
+            "FRAMESIZE_UXGA": (1600, 1200),
+            "FRAMESIZE_SXGA": (1280, 1024),
+            "FRAMESIZE_XGA": (1024, 768),
+            "FRAMESIZE_SVGA": (800, 600),
+            "FRAMESIZE_VGA": (640, 480),
+            "FRAMESIZE_CIF": (352, 288),
+            "FRAMESIZE_QVGA": (320, 240),
+            "FRAMESIZE_96X96": (96, 96),
+        }
         
         if pixformat == "PIXFORMAT_RGB565":
             converter_func = image_processing.convert_image_rgb565_to_rgb
@@ -41,13 +52,11 @@ class main_window(QMainWindow, ui_frontend.Ui_mainWindow):
             converter_func = image_processing.convert_image_YUV422_to_rgb
         else:
             return
-        if framesize == "FRAMESIZE_96X96":
-            width = 96
-            heigth = 96
-        else:
+        if framesize not in frame_dimensions:
             return
+        width, height = frame_dimensions[framesize]
         try:
-            image = converter_func(data, heigth, width)
+            image = converter_func(data, height, width)
         except Exception as e:
             print("Error ", e)
             self.statusbar.showMessage("Frame Issue: %s"%str(e))

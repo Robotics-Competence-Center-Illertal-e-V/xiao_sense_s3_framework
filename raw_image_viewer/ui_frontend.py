@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'frontendNjLRsG.ui'
+## Form generated from reading UI file 'frontend.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.10.1
 ##
@@ -90,6 +90,13 @@ class Ui_mainWindow(object):
 
         self.comboFramesize = QComboBox(self.horizontalLayoutWidget)
         self.comboFramesize.addItem("")
+        self.comboFramesize.addItem("")
+        self.comboFramesize.addItem("")
+        self.comboFramesize.addItem("")
+        self.comboFramesize.addItem("")
+        self.comboFramesize.addItem("")
+        self.comboFramesize.addItem("")
+        self.comboFramesize.addItem("")
         self.comboFramesize.setObjectName(u"comboFramesize")
 
         self.verticalLayout_2.addWidget(self.comboFramesize)
@@ -143,7 +150,14 @@ class Ui_mainWindow(object):
         self.comboPixFormat.setItemText(2, QCoreApplication.translate("mainWindow", u"PIXFORMAT_YUV422", None))
 
         self.label_2.setText(QCoreApplication.translate("mainWindow", u"Framesize", None))
-        self.comboFramesize.setItemText(0, QCoreApplication.translate("mainWindow", u"FRAMESIZE_96X96", None))
+        self.comboFramesize.setItemText(0, QCoreApplication.translate("mainWindow", u"FRAMESIZE_UXGA (1600x1200)", None))
+        self.comboFramesize.setItemText(1, QCoreApplication.translate("mainWindow", u"FRAMESIZE_SXGA (1280x1024)", None))
+        self.comboFramesize.setItemText(2, QCoreApplication.translate("mainWindow", u"FRAMESIZE_XGA (1024x768)", None))
+        self.comboFramesize.setItemText(3, QCoreApplication.translate("mainWindow", u"FRAMESIZE_SVGA (800x600)", None))
+        self.comboFramesize.setItemText(4, QCoreApplication.translate("mainWindow", u"FRAMESIZE_VGA (640x480)", None))
+        self.comboFramesize.setItemText(5, QCoreApplication.translate("mainWindow", u"FRAMESIZE_CIF (352x288)", None))
+        self.comboFramesize.setItemText(6, QCoreApplication.translate("mainWindow", u"FRAMESIZE_QVGA (320x240)", None))
+        self.comboFramesize.setItemText(7, QCoreApplication.translate("mainWindow", u"FRAMESIZE_96X96 (96x96)", None))
 
         self.PixelData.setText("")
         self.label.setText(QCoreApplication.translate("mainWindow", u"Folder", None))

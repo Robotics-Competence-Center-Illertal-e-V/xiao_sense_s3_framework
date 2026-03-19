@@ -108,7 +108,42 @@
         <widget class="QComboBox" name="comboFramesize">
          <item>
           <property name="text">
-           <string>FRAMESIZE_96X96</string>
+                <string>FRAMESIZE_UXGA (1600x1200)</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+                <string>FRAMESIZE_SXGA (1280x1024)</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+                <string>FRAMESIZE_XGA (1024x768)</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+                <string>FRAMESIZE_SVGA (800x600)</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+                <string>FRAMESIZE_VGA (640x480)</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+                <string>FRAMESIZE_CIF (352x288)</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+                <string>FRAMESIZE_QVGA (320x240)</string>
+                    </property>
+                 </item>
+                 <item>
+                    <property name="text">
+                <string>FRAMESIZE_96X96 (96x96)</string>
           </property>
          </item>
         </widget>
